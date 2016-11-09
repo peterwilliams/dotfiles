@@ -1,0 +1,65 @@
+# Sexy Bash Prompt, inspired by "Extravagant Zsh Prompt"
+
+# Based on:
+# https://gist.github.com/gf3/306785/a35d28b6bdd0f7c54318cce510738438f04dabaa
+# https://github.com/necolas/dotfiles/blob/master/shell/bash_prompt
+
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]]  && infocmp gnome-256color >/dev/null 2>&1; then TERM=gnome-256color; fi
+
+tput sgr0 # reset colors
+
+bold=$(tput bold)
+reset=$(tput sgr0)
+
+# Solarized colors
+# (https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized#the-values)
+black=$(tput setaf 0)
+blue=$(tput setaf 33)
+cyan=$(tput setaf 37)
+green=$(tput setaf 2)
+orange=$(tput setaf 166)
+purple=$(tput setaf 125)
+red=$(tput setaf 124)
+white=$(tput setaf 15)
+yellow=$(tput setaf 136)
+
+parse_git_dirty () {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "*"
+}
+parse_git_branch () {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+}
+
+
+# logged in as root
+if [[ "$USER" == "root" ]]; then
+    userStyle="\[$bold$red\]"
+else
+    userStyle="\[$green\]"
+fi
+
+# connected via ssh
+if [[ "$SSH_TTY" ]]; then
+    hostStyle="\[$bold$red\]"
+else
+    hostStyle="\[$green\]"
+fi
+
+# set the terminal title to the current working directory
+PS1="\[\033]0;\w\007\]"
+
+# username
+PS1+="\[$userStyle\]\u"
+PS1+="@"
+
+# host
+PS1+="\[$hostStyle\]\h"
+PS1+="\[$reset$white\]: "
+
+# working directory
+PS1+="\[$blue\]\w"
+
+# git repository details
+PS1+="\[$white\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$orange\]\$(parse_git_branch)"
+PS1+="\n"
+PS1+="\[$reset$white\]\$ \[$reset\]" # $ (and reset color)

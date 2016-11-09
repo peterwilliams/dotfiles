@@ -1,0 +1,13 @@
+{
+    "user": {
+        "linters": {
+            "eslint": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            }
+        },
+        "no_column_highlights_line": true,
+        "show_errors_on_save": true
+    }
+}

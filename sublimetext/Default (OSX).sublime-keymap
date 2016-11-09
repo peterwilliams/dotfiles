@@ -1,0 +1,10 @@
+[
+    { "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "bol", "extend": false} },
+    { "keys": ["ctrl+e"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+    { "keys": ["ctrl+k"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete to Hard EOL.sublime-macro"} },
+    { "keys": ["ctrl+u"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete to Hard BOL.sublime-macro"} },
+    { "keys": ["super+n"], "command": "new_window" },
+    { "keys": ["super+t"], "command": "new_file" },
+    { "keys": ["super+shift+k"], "command": "toggle_side_bar" },
+    { "keys": ["super+shift+o"], "command": "open_dir", "args": {"dir": "$file_path", "file": "$file_name"} }
+]

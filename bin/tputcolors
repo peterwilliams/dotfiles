@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo
+echo -e "$(tput bold) reg  bld  und   tput-command-colors$(tput sgr0)"
+
+for i in $(seq 1 256); do
+  echo " $(tput setaf $i)Text$(tput sgr0) $(tput bold)$(tput setaf $i)Text$(tput sgr0) \$(tput setaf $i)"
+done
+
+echo ' Bold            $(tput bold)'
+echo ' Reset           $(tput sgr0)'
+echo

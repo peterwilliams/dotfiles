@@ -1,0 +1,29 @@
+[alias]
+  commend = commit --amend --no-edit
+  contribs = shortlog -sn
+  history = log --follow -p
+  lg = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(green)%an %C(reset)%s%C(red)%d' --date=short --decorate
+[color]
+  ui = always
+[color "diff"]
+  meta = yellow bold
+  commit = green bold
+  frag = magenta bold
+  old = red
+  new = green
+  whitespace = red reverse
+[color "diff-highlight"]
+  oldNormal = red
+  oldHighlight = "red 52"
+  newNormal = "green"
+  newHighlight = "green 22"
+[core]
+  editor = nano
+  excludesfile = ~/.gitignore
+  pager = diff-so-fancy | less --tabs=4 -RFX
+[push]
+  default = simple
+
+# Include username / email / etc from separate file
+[include]
+  path = ~/.gitconfig_private
