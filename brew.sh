@@ -20,6 +20,7 @@ brew install youtube-dl
 
 brew cask install 1password
 brew cask install aerial
+brew cask install alfred
 brew cask install appcleaner
 brew cask install audacity
 brew cask install dropbox

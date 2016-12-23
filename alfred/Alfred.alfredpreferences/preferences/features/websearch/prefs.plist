@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>8C5B95D3-1918-4E3D-9DED-BA4933B21456</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>cache</string>
+			<key>text</key>
+			<string>Search Google Cache for {query}</string>
+			<key>url</key>
+			<string>http://webcache.googleusercontent.com/search?q=cache:{query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>AF469918-A00B-4A9D-930B-AD6B5C7FEF4A</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>mdn</string>
+			<key>text</key>
+			<string>Search MDN for {query}</string>
+			<key>url</key>
+			<string>https://developer.mozilla.org/en-US/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>DEF63944-CAC0-4E51-A0F0-B5CD5E5FB328</key>
+		<dict>
+			<key>enabled</key>
+			<false/>
+			<key>keyword</key>
+			<string>d</string>
+			<key>text</key>
+			<string>Search for definition of {query}</string>
+			<key>url</key>
+			<string>http://definr.com/{query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>onlyShowEnabledInPrefs</key>
+	<true/>
+</dict>
+</plist>
