@@ -44,6 +44,10 @@ echo "---- Show all filename extensions"
 echo "Original value: '"`defaults read NSGlobalDomain AppleShowAllExtensions`"'"
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
+echo "---- Disable crash reporter"
+echo "Original value: '"`defaults read com.apple.CrashReporter DialogType`"'"
+defaults write com.apple.CrashReporter DialogType none
+
 echo "---- Enable snap-to-grid for icons on the desktop and in other icon views"
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
