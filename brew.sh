@@ -14,6 +14,7 @@ brew install diff-so-fancy
 brew install dockutil
 brew install ffmpeg
 brew install git
+brew install gpg
 brew install youtube-dl
 
 # Install Cask Apps
