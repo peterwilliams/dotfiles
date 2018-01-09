@@ -2,6 +2,7 @@
   commend = commit --amend --no-edit
   contribs = shortlog -sn
   history = log --follow -p
+  blg = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(green)%an %C(reset)%s%C(red)%d' --date=short --decorate --no-merges ^master
   lg = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(green)%an %C(reset)%s%C(red)%d' --date=short --decorate
 [color]
   ui = always
