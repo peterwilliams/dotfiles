@@ -15,6 +15,7 @@ brew install dockutil
 brew install ffmpeg
 brew install git
 brew install gpg
+brew install node
 brew install yarn
 brew install youtube-dl
 
