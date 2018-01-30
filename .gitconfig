@@ -4,6 +4,7 @@
   history = log --follow -p
   blg = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(green)%an %C(reset)%s%C(red)%d' --date=short --decorate --no-merges ^master
   lg = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(green)%an %C(reset)%s%C(red)%d' --date=short --decorate
+  dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
 [color]
   ui = always
 [color "diff"]
@@ -21,7 +22,6 @@
 [core]
   editor = nano
   excludesfile = ~/.gitignore
-  pager = diff-so-fancy | less --tabs=4 -RFX
 [push]
   default = simple
 
