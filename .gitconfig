@@ -1,10 +1,14 @@
 [alias]
-  commend = commit --amend --no-edit
-  contribs = shortlog -sn
-  history = log --follow -p
-  blg = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(green)%an %C(reset)%s%C(red)%d' --date=short --decorate --no-merges ^master
-  lg = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(green)%an %C(reset)%s%C(red)%d' --date=short --decorate
+  append = "!f() { git add --all && git commit -a --amend --no-edit; }; f"
+  # Remove branches that have already been merged with master (preview)
+  bclean = "!f() { git branch --merged | grep -v '\\*'; }; f"
+  # Remove branches that have already been merged with master
+  bcleanf = "!f() { git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d; }; f"
   dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+  history = log --follow -p
+  lg = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(green)%an %C(reset)%s%C(red)%d' --date=short --decorate
+  undo = "!f() { git reset --soft HEAD~1 && git reset HEAD .; }; f"
+  wip = "!f() { git add --all && git commit -a --no-verify -m 'WIP'; }; f"
 [color]
   ui = always
 [color "diff"]
