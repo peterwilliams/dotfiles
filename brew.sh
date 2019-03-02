@@ -30,7 +30,7 @@ brew cask install dropbox
 brew cask install flux
 brew cask install google-chrome
 brew cask install handbrake
-brew cask install notational-velocity
+brew cask install nvalt
 brew cask install spotify
 brew cask install sublime-text
 brew cask install the-unarchiver
