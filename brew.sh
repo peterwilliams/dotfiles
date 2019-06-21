@@ -14,9 +14,7 @@ brew install diff-so-fancy
 brew install dockutil
 brew install ffmpeg
 brew install git
-brew install gpg
 brew install node
-brew install yarn
 brew install youtube-dl
 
 # Install Cask Apps
@@ -25,7 +23,6 @@ brew cask install 1password
 brew cask install aerial
 brew cask install alfred
 brew cask install appcleaner
-brew cask install audacity
 brew cask install dropbox
 brew cask install flux
 brew cask install google-chrome
