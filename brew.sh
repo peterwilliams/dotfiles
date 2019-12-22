@@ -20,13 +20,11 @@ brew install youtube-dl
 # Install Cask Apps
 
 brew cask install 1password
-brew cask install aerial
 brew cask install alfred
 brew cask install appcleaner
 brew cask install dropbox
 brew cask install flux
 brew cask install google-chrome
-brew cask install handbrake
 brew cask install nvalt
 brew cask install spotify
 brew cask install sublime-text

@@ -1,4 +1,6 @@
 PATH=~/bin
+# Use Homebrew Python instead of system
+PATH=$PATH:/usr/local/opt/python/libexec/bin
 PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/local/sbin
 PATH=$PATH:/usr/bin
