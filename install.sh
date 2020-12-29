@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES_DIR="$HOME/development/code/personal/dotfiles"
+DOTFILES_DIR="$HOME/development/code/dotfiles"
 FILES='.aliases
 .bash_profile
 .bash_prompt
