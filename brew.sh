@@ -2,7 +2,7 @@
 
 # Setup Homebrew Cask
 
-brew tap caskroom/cask
+brew tap homebrew/cask
 
 # Setup Auto-completion
 
@@ -19,24 +19,24 @@ brew install youtube-dl
 
 # Install Cask Apps
 
-brew cask install 1password
-brew cask install alfred
-brew cask install appcleaner
-brew cask install dropbox
-brew cask install flux
-brew cask install google-chrome
-brew cask install nvalt
-brew cask install spotify
-brew cask install sublime-text
-brew cask install the-unarchiver
-brew cask install transmission
-brew cask install vlc
+brew install --cask 1password
+brew install --cask alfred
+brew install --cask appcleaner
+brew install --cask dropbox
+brew install --cask flux
+brew install --cask google-chrome
+brew install --cask nvalt
+brew install --cask spotify
+brew install --cask sublime-text
+brew install --cask the-unarchiver
+brew install --cask transmission
+brew install --cask vlc
 
 # Install Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
 
-brew cask install qlcolorcode
-brew cask install qlimagesize
-brew cask install qlmarkdown
-brew cask install qlstephen
-brew cask install quicklook-json
-brew cask install quicklook-csv
+brew install --cask qlcolorcode
+brew install --cask qlimagesize
+brew install --cask qlmarkdown
+brew install --cask qlstephen
+brew install --cask quicklook-json
+brew install --cask quicklook-csv
