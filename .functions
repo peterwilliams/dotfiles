@@ -10,6 +10,7 @@ function ytmp4() {
   youtube-dl -f bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4 ${1}
 }
 
+# .mpd files / manifests / etc
 function m3u8() {
   ffmpeg -protocol_whitelist file,http,https,tcp,tls,crypto -i ${1} -c copy ${2:-video.mp4}
 }

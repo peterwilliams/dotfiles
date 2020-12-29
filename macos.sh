@@ -33,6 +33,10 @@ echo "---- Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TI
 echo "Original value: '"`defaults read com.apple.screencapture type`"'"
 defaults write com.apple.screencapture type -string "png"
 
+echo "---- Disable screenshot thumbnail preview upon capture"
+echo "Original value: '"`defaults read com.apple.screencapture show-thumbnail`"'"
+defaults write com.apple.screencapture show-thumbnail -bool FALSE
+
 echo "---- Avoid creating .DS_Store files on network volumes"
 echo "Original value: '"`defaults read com.apple.desktopservices DSDontWriteNetworkStores`"'"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
