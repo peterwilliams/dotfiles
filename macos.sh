@@ -1,12 +1,12 @@
 #!/bin/bash
 
-HOSTNAME="wakanpi"
+HOSTNAME=""
 
 echo "---- Set computer name to $HOSTNAME (as done via System Preferences → Sharing)"
-echo "Original value: '"`scutil --get ComputerName`"'"
-echo "Original value: '"`scutil --get HostName`"'"
-echo "Original value: '"`scutil --get LocalHostName`"'"
-echo "Original value: '"`defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName`"'"
+echo "Original value (ComputerName): '"`scutil --get ComputerName`"'"
+echo "Original value (LocalHostName): '"`scutil --get LocalHostName`"'"
+echo "Original value (HostName): '"`scutil --get HostName`"'"
+echo "Original value (NetBIOSName): '"`defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName`"'"
 # Friendly name shown in System Preferences > Sharing
 sudo scutil --set ComputerName $HOSTNAME
 # Bonjour name ending in .local
@@ -14,7 +14,7 @@ sudo scutil --set LocalHostName $HOSTNAME
 # The name recognized by the hostname command
 sudo scutil --set HostName $HOSTNAME
 # Max of 15 characters
-defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $HOSTNAME
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $HOSTNAME
 
 echo "---- Enable Secure Keyboard Entry in Terminal.app"
 # See: https://security.stackexchange.com/a/47786/8918
@@ -91,10 +91,10 @@ echo "Original value: '"`defaults read com.apple.finder _FXShowPosixPathInTitle`
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
 
 echo "---- Finder: Show icons for hard drives, servers, and removable media on the Desktop"
-echo "Original value: '"`defaults read com.apple.finder ShowExternalHardDrivesOnDesktop`"'"
-echo "Original value: '"`defaults read com.apple.finder ShowHardDrivesOnDesktop`"'"
-echo "Original value: '"`defaults read com.apple.finder ShowMountedServersOnDesktop`"'"
-echo "Original value: '"`defaults read com.apple.finder ShowRemovableMediaOnDesktop`"'"
+echo "Original value (ShowExternalHardDrivesOnDesktop): '"`defaults read com.apple.finder ShowExternalHardDrivesOnDesktop`"'"
+echo "Original value (ShowHardDrivesOnDesktop): '"`defaults read com.apple.finder ShowHardDrivesOnDesktop`"'"
+echo "Original value (ShowMountedServersOnDesktop): '"`defaults read com.apple.finder ShowMountedServersOnDesktop`"'"
+echo "Original value (ShowRemovableMediaOnDesktop): '"`defaults read com.apple.finder ShowRemovableMediaOnDesktop`"'"
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
@@ -124,8 +124,8 @@ defaults write com.apple.dock mru-spaces -bool false
 echo "---- Dock: Hot Corners: Bottom-Right screen corner => Start screen saver"
 echo "Original value: '"`defaults read com.apple.dock wvous-br-corner`"'"
 echo "Original value: '"`defaults read com.apple.dock wvous-br-modifier`"'"
-defaults write com.apple.dock wvous-br-corner -int 5
-defaults write com.apple.dock wvous-br-modifier -int 0
+defaults write com.apple.dock wvous-bl-corner -int 5
+defaults write com.apple.dock wvous-bl-modifier -int 0
 
 echo "---- Dock: Automatically hide and show the Dock"
 echo "Original value: '"`defaults read com.apple.dock autohide`"'"
@@ -152,8 +152,8 @@ echo "Original value: '"`defaults read com.apple.iCal "Show heat map in Year Vie
 defaults write com.apple.iCal "Show heat map in Year View" -bool true
 
 echo "---- Require password immediately after sleep or screen saver begins"
-echo "Original value: '"`defaults read com.apple.screensaver askForPassword`"'"
-echo "Original value: '"`defaults read com.apple.screensaver askForPasswordDelay`"'"
+echo "Original value (askForPassword): '"`defaults read com.apple.screensaver askForPassword`"'"
+echo "Original value (askForPasswordDelay): '"`defaults read com.apple.screensaver askForPasswordDelay`"'"
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
@@ -194,14 +194,18 @@ echo "Original value: '"`defaults read -g ApplePressAndHoldEnabled`"'"
 defaults write -g ApplePressAndHoldEnabled -bool false
 
 echo "---- Set a blazingly fast keyboard repeat rate"
-echo "Original value: '"`defaults read NSGlobalDomain KeyRepeat`"'"
-echo "Original value: '"`defaults read NSGlobalDomain InitialKeyRepeat`"'"
+echo "Original value (KeyRepeat): '"`defaults read NSGlobalDomain KeyRepeat`"'"
+echo "Original value (InitialKeyRepeat): '"`defaults read NSGlobalDomain InitialKeyRepeat`"'"
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 echo "---- Use F1, F2, etc. keys as standard function keys"
 echo "Original value: '"`defaults read -g com.apple.keyboard.fnState`"'"
-defaults write -g com.apple.keyboard.fnState -bool true (referenced here)
+defaults write -g com.apple.keyboard.fnState -bool true
+
+echo "---- Touch Bar shows function keys by default"
+echo "Original value: '"`defaults read com.apple.touchbar.agent PresentationModeGlobal`"'"
+defaults write com.apple.touchbar.agent PresentationModeGlobal -string functionKeys
 
 echo "---- Show day of the week and date in the menu bar"
 echo "Original value: '"`defaults read com.apple.menuextra.clock DateFormat`"'"
@@ -218,14 +222,6 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 echo "---- Disable smart dashes"
 echo "Original value: '"`defaults read NSGlobalDomain NSAutomaticDashSubstitutionEnabled`"'"
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
-echo "---- Twitter: Enable the hidden ‘Develop’ menu"
-echo "Original value: '"`defaults read com.twitter.twitter-mac ShowDevelopMenu`"'"
-defaults write com.twitter.twitter-mac ShowDevelopMenu -bool true
-
-echo "---- Twitter: Open links in the background"
-echo "Original value: '"`defaults read com.twitter.twitter-mac openLinksInBackground`"'"
-defaults write com.twitter.twitter-mac openLinksInBackground -bool true
 
 echo "---- Safari: Prevent Safari from opening 'safe' files automatically after downloading"
 echo "Original value: '"`defaults read com.apple.Safari AutoOpenSafeDownloads`"'"
@@ -259,18 +255,18 @@ echo "Original value: '"`defaults read com.apple.Safari DownloadsClearingPolicy`
 defaults write com.apple.Safari DownloadsClearingPolicy -int 1
 
 echo "---- Safari: disable AutoFill"
-echo "Original value: '"`defaults read com.apple.Safari AutoFillFromAddressBook`"'"
-echo "Original value: '"`defaults read com.apple.Safari AutoFillPasswords`"'"
-echo "Original value: '"`defaults read com.apple.Safari AutoFillCreditCardData`"'"
-echo "Original value: '"`defaults read com.apple.Safari AutoFillMiscellaneousForms`"'"
+echo "Original value (AutoFillFromAddressBook): '"`defaults read com.apple.Safari AutoFillFromAddressBook`"'"
+echo "Original value (AutoFillPasswords): '"`defaults read com.apple.Safari AutoFillPasswords`"'"
+echo "Original value (AutoFillCreditCardData): '"`defaults read com.apple.Safari AutoFillCreditCardData`"'"
+echo "Original value (AutoFillMiscellaneousForms): '"`defaults read com.apple.Safari AutoFillMiscellaneousForms`"'"
 defaults write com.apple.Safari AutoFillFromAddressBook -bool false
 defaults write com.apple.Safari AutoFillPasswords -bool false
 defaults write com.apple.Safari AutoFillCreditCardData -bool false
 defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
 
 echo "---- Safari: Don't send search queries to Apple"
-echo "Original value: '"`defaults read com.apple.Safari UniversalSearchEnabled`"'"
-echo "Original value: '"`defaults read com.apple.Safari SuppressSearchSuggestions`"'"
+echo "Original value (UniversalSearchEnabled): '"`defaults read com.apple.Safari UniversalSearchEnabled`"'"
+echo "Original value (SuppressSearchSuggestions): '"`defaults read com.apple.Safari SuppressSearchSuggestions`"'"
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 
@@ -313,11 +309,11 @@ defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 echo "---- Reset apps in Dock"
 dockutil --no-restart --remove all
 dockutil --no-restart --add "/Applications/Google Chrome.app"
-dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
-dockutil --no-restart --add "/Applications/Notational Velocity .app"
+dockutil --no-restart --add "/System/Applications/Utilities/Terminal.app"
+dockutil --no-restart --add "/Applications/nvALT.app"
 dockutil --no-restart --add "/Applications/Spotify.app"
-dockutil --no-restart --add "/Applications/Twitter.app"
-dockutil --no-restart --add "/Applications/Messages.app"
+dockutil --no-restart --add "/Applications/Tweetbot.app"
+dockutil --no-restart --add "/System/Applications/Messages.app"
 dockutil --no-restart --add "/Applications/Sublime Text.app"
 
 # MENU_SPOTLIGHT_SUGGESTIONS (send search queries to Apple)
@@ -354,7 +350,14 @@ sudo mdutil -i on / > /dev/null
 sudo mdutil -E / > /dev/null
 
 echo "---- Killing all affected apps..."
-for app in "cfprefsd" "Calendar" "Dock" "Finder" "Messages" "Safari" "Terminal"; do
-  killall "${app}" > /dev/null 2>&1
+for app in "Calendar" \
+  "cfprefsd" \
+  "Dock" \
+  "Finder" \
+  "Messages" \
+  "Safari" \
+  "Terminal"; do
+  killall "${app}" &> /dev/null
+done
 
 echo "---- Done. Note that some of these changes require a logout/restart to take effect."
