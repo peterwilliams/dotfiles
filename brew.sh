@@ -31,12 +31,3 @@ brew install --cask sublime-text
 brew install --cask the-unarchiver
 brew install --cask transmission
 brew install --cask vlc
-
-# Install Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
-
-brew install --cask qlcolorcode
-brew install --cask qlimagesize
-brew install --cask qlmarkdown
-brew install --cask qlstephen
-brew install --cask quicklook-json
-brew install --cask quicklook-csv
