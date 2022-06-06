@@ -3,12 +3,9 @@ function md() {
 }
 
 function ytmp3() {
-  youtube-dl --extract-audio --audio-format "mp3" --audio-quality 0 ${1}
+  yt-dlp --extract-audio --audio-format "mp3" --audio-quality 0 "$@"
 }
 
-function ytmp4() {
-  youtube-dl -f bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4 ${1}
-}
 
 # .mpd files / manifests / etc
 function m3u8() {
