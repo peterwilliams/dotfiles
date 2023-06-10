@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Setup Homebrew Cask
-
-brew tap homebrew/cask
-
 # Setup Auto-completion
 
 brew install bash-completion
