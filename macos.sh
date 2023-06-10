@@ -312,7 +312,6 @@ dockutil --no-restart --add "/Applications/Google Chrome.app"
 dockutil --no-restart --add "/System/Applications/Utilities/Terminal.app"
 dockutil --no-restart --add "/Applications/nvALT.app"
 dockutil --no-restart --add "/Applications/Spotify.app"
-dockutil --no-restart --add "/Applications/Tweetbot.app"
 dockutil --no-restart --add "/System/Applications/Messages.app"
 dockutil --no-restart --add "/Applications/Sublime Text.app"
 
