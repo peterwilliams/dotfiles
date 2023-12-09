@@ -11,7 +11,7 @@ brew install dockutil
 brew install ffmpeg
 brew install git
 brew install node
-brew install youtube-dl
+brew install yt-dlp
 
 # Install Cask Apps
 
