@@ -8,6 +8,7 @@ brew install bash-completion
 
 brew install diff-so-fancy
 brew install dockutil
+brew install exiftool
 brew install ffmpeg
 brew install git
 brew install node
@@ -25,5 +26,5 @@ brew install --cask nvalt
 brew install --cask spotify
 brew install --cask sublime-text
 brew install --cask the-unarchiver
-brew install --cask transmission
+# brew install --cask transmission
 brew install --cask vlc
