@@ -161,16 +161,16 @@ echo "---- Show remaining battery time"
 echo "Original value: '"`defaults read com.apple.menuextra.battery ShowPercent`"'"
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
-echo "---- Sleep after 60 min (battery)"
+echo "---- Sleep after 60 min (all)"
 sudo pmset -a sleep 60
 
-echo "---- Turn the display off after 30 min (power adapter)"
+echo "---- Turn the display off after 30 min (all)"
 sudo pmset -a displaysleep 30
 
-echo "---- Sleep after 30 min (battery)"
-sudo pmset -a sleep 30
+echo "---- Sleep after 30 min (battery [override])"
+sudo pmset -b sleep 30
 
-echo "---- Turn the display off after 10 min (battery)"
+echo "---- Turn the display off after 10 min (battery [override])"
 sudo pmset -b displaysleep 10
 
 echo "---- Check for software updates daily (not just once per week)"
