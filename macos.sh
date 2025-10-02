@@ -135,10 +135,6 @@ echo "---- Dock: Remove the auto-hiding delay"
 echo "Original value: '"`defaults read com.apple.dock autohide-delay`"'"
 defaults write com.apple.dock autohide-delay -float 0
 
-echo "---- Calendar: Set 'start of the week' to Monday"
-echo "Original value: '"`defaults read com.apple.iCal "first day of week"`"'"
-defaults write com.apple.iCal "first day of week" -int 1
-
 echo "---- Calendar: Display 24 hours"
 echo "Original value: '"`defaults read com.apple.iCal "number of hours displayed"`"'"
 defaults write com.apple.iCal "number of hours displayed" -int 24
@@ -153,9 +149,7 @@ defaults write com.apple.iCal "Show heat map in Year View" -bool true
 
 echo "---- Require password immediately after sleep or screen saver begins"
 echo "Original value (askForPassword): '"`defaults read com.apple.screensaver askForPassword`"'"
-echo "Original value (askForPasswordDelay): '"`defaults read com.apple.screensaver askForPasswordDelay`"'"
 defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 echo "---- Show remaining battery time"
 echo "Original value: '"`defaults read com.apple.menuextra.battery ShowPercent`"'"
@@ -254,38 +248,6 @@ echo "---- Safari: Remove downloaded items from list when Safari quits"
 echo "Original value: '"`defaults read com.apple.Safari DownloadsClearingPolicy`"'"
 defaults write com.apple.Safari DownloadsClearingPolicy -int 1
 
-echo "---- Safari: disable AutoFill"
-echo "Original value (AutoFillFromAddressBook): '"`defaults read com.apple.Safari AutoFillFromAddressBook`"'"
-echo "Original value (AutoFillPasswords): '"`defaults read com.apple.Safari AutoFillPasswords`"'"
-echo "Original value (AutoFillCreditCardData): '"`defaults read com.apple.Safari AutoFillCreditCardData`"'"
-echo "Original value (AutoFillMiscellaneousForms): '"`defaults read com.apple.Safari AutoFillMiscellaneousForms`"'"
-defaults write com.apple.Safari AutoFillFromAddressBook -bool false
-defaults write com.apple.Safari AutoFillPasswords -bool false
-defaults write com.apple.Safari AutoFillCreditCardData -bool false
-defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
-
-echo "---- Safari: Don't send search queries to Apple"
-echo "Original value (UniversalSearchEnabled): '"`defaults read com.apple.Safari UniversalSearchEnabled`"'"
-echo "Original value (SuppressSearchSuggestions): '"`defaults read com.apple.Safari SuppressSearchSuggestions`"'"
-defaults write com.apple.Safari UniversalSearchEnabled -bool false
-defaults write com.apple.Safari SuppressSearchSuggestions -bool true
-
-echo "---- Safari: Don't preload top hit in the background"
-echo "Original value: '"`defaults read com.apple.Safari PreloadTopHit`"'"
-defaults write com.apple.Safari PreloadTopHit -bool false
-
-echo "---- Safari: Disable Plugins"
-echo "Original value: '"`defaults read com.apple.Safari WebKitPluginsEnabled`"'"
-echo "Original value: '"`defaults read com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled`"'"
-defaults write com.apple.Safari WebKitPluginsEnabled -bool false
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled -bool false
-
-echo "---- Safari: Disable Java"
-echo "Original value: '"`defaults read com.apple.Safari WebKitJavaEnabled`"'"
-echo "Original value: '"`defaults read com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled`"'"
-defaults write com.apple.Safari WebKitJavaEnabled -bool false
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
-
 echo "---- Safari: Enable DNT Header"
 echo "Original value: '"`defaults read com.apple.Safari SendDoNotTrackHTTPHeader`"'"
 defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
@@ -293,18 +255,6 @@ defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 echo "---- Safari: Enable debug menu"
 echo "Original value: '"`defaults read com.apple.Safari IncludeInternalDebugMenu`"'"
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
-
-echo "---- Safari: Enable the Develop menu and the Web Inspector"
-echo "Original value: '"`defaults read com.apple.Safari IncludeDevelopMenu`"'"
-echo "Original value: '"`defaults read com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey`"'"
-echo "Original value: '"`defaults read com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled`"'"
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-
-echo "---- Safari: show the full URL in the address bar (note: this still hides the scheme)"
-echo "Original value: '"`defaults read com.apple.Safari ShowFullURLInSmartSearchField`"'"
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 
 echo "---- Reset apps in Dock"
 dockutil --no-restart --remove all
@@ -315,48 +265,14 @@ dockutil --no-restart --add "/Applications/Spotify.app"
 dockutil --no-restart --add "/System/Applications/Messages.app"
 dockutil --no-restart --add "/Applications/Sublime Text.app"
 
-# MENU_SPOTLIGHT_SUGGESTIONS (send search queries to Apple)
-# MENU_WEBSEARCH             (send search queries to Apple)
-echo "---- Spotlight: Change indexing order and disable some search results"
-echo "Original value: '"`defaults read com.apple.spotlight orderedItems`"'"
-defaults write com.apple.spotlight orderedItems -array \
-  '{"enabled" = 1;"name" = "APPLICATIONS";}' \
-  '{"enabled" = 1;"name" = "MENU_DEFINITION";}' \
-  '{"enabled" = 1;"name" = "MENU_EXPRESSION";}' \
-  '{"enabled" = 1;"name" = "MENU_CONVERSION";}' \
-  '{"enabled" = 1;"name" = "MENU_OTHER";}' \
-  '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
-  '{"enabled" = 1;"name" = "DIRECTORIES";}' \
-  '{"enabled" = 1;"name" = "DOCUMENTS";}' \
-  '{"enabled" = 1;"name" = "IMAGES";}' \
-  '{"enabled" = 1;"name" = "MUSIC";}' \
-  '{"enabled" = 1;"name" = "MOVIES";}' \
-  '{"enabled" = 1;"name" = "PDF";}' \
-  '{"enabled" = 1;"name" = "CONTACT";}' \
-  '{"enabled" = 1;"name" = "MESSAGES";}' \
-  '{"enabled" = 1;"name" = "EVENT_TODO";}' \
-  '{"enabled" = 1;"name" = "PRESENTATIONS";}' \
-  '{"enabled" = 1;"name" = "SPREADSHEETS";}' \
-  '{"enabled" = 1;"name" = "FONTS";}' \
-  '{"enabled" = 0;"name" = "BOOKMARKS";}' \
-  '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'\
-  '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}'
-# Load new settings before rebuilding the index
-killall mds > /dev/null 2>&1
-# Make sure indexing is enabled for the main volume
-sudo mdutil -i on / > /dev/null
-# Rebuild the index from scratch
-sudo mdutil -E / > /dev/null
-
 echo "---- Killing all affected apps..."
 for app in "Calendar" \
   "cfprefsd" \
   "Dock" \
   "Finder" \
   "Messages" \
-  "Safari" \
-  "Terminal"; do
+  "Safari"; do
   killall "${app}" &> /dev/null
 done
 
-echo "---- Done. Note that some of these changes require a logout/restart to take effect."
+echo "---- Done. Note that some of these changes require a logout/restart to take effect. Make sure to restart Terminal after reviewing the output"
