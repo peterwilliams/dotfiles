@@ -5,6 +5,7 @@
 	<key>scope</key>
 	<array>
 		<string>/System/Library/CoreServices/Applications</string>
+		<string>~/Library/CloudStorage/Dropbox</string>
 	</array>
 </dict>
 </plist>
