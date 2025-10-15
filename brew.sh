@@ -20,6 +20,7 @@ brew install --cask 1password
 brew install --cask alfred
 brew install --cask appcleaner
 brew install --cask dropbox
+brew install --cask fission
 brew install --cask flux
 brew install --cask google-chrome
 brew install --cask nvalt
