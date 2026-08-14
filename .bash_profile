@@ -22,6 +22,8 @@ unset file;
 # Homebrew config
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
+
 # bash autocompletion (git, etc)
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
